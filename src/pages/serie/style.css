@@ -6,6 +6,7 @@
     border-radius: 5px;
     border: 1px solid #ddd;
     justify-content: center;
+    align-items: center; 
 }
 
 .serie-info h1 {
@@ -18,9 +19,47 @@
     line-height:24px;
     margin-top: 5px;
     justify-content: center;
+    text-align: justify;
 }
 
 .serie-info p a {
     color: #069;
     justify-content: center;
+}
+
+.serie-info .btnSave button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(0, 0, 0);
+    color: rgb(216, 13, 13);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.serie-info .btnSave button:hover {
+    opacity: 0.8;
+}
+
+.serie-info .actions button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: rgb(0, 0, 0);
+    color: rgb(216, 13, 13);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 15px 10px 0px 0px; 
+}
+
+.serie-info .actions button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.serie-info .actions button:hover {
+    opacity: 0.7;
 }

@@ -19,13 +19,11 @@ export default class Main extends Component {
         }else{
             this.loadSeries();
         }
-        //this.setState({stat: ['Minha Lista', 'Em Andamento', 'Finalizada']});
-        //console.log(this.state.stat[0]);
     }
 
     loadSeries = async (page=1) => {
         const response = await api.get(`/series?page=${page}`);
-        const { docs, ...seriesInfo } = response.data;       
+        const { docs, ...seriesInfo } = response.data;     
         this.setState({ series: docs, seriesInfo, page });
     }
     loadSeriesByStatus = async (status=0) => {
@@ -64,7 +62,10 @@ export default class Main extends Component {
                     </article>
                 ))}
                 <div className="actions">
-                    <button disabled={page===1} onClick={this.prevPage}>Anterior</button>
+                    <button disabled={page === 1} onClick={this.prevPage}>Anterior</button>
+                    <div className="link">
+                        <Link to={`/series-create`}><p>Adicionar Série</p></Link>
+                    </div>
                     <button disabled={page === seriesInfo.pages} onClick={this.nextPage}>Próxima</button>
                 </div>
             </div>
