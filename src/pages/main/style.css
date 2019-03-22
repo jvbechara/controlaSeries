@@ -1,88 +1,99 @@
-.series-list {
-    max-width: 700px;
-    margin: 20px auto 0;
-    padding: 0 20px;
+a:hover {
+    color: lightgray;
 }
 
-.series-list article {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
+.container .justify-content-md-center.row {
+    background-color: rgba(224, 222, 222, 0.295);
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.048);
 }
 
-.series-list article p {
-    font-size: 16px;
-    color: #999;
-    margin-top: 5px;
-    line-height: 24px;
+.container .justify-content-md-center.pagination {
+    margin: 1rem;
+    background-color: white;
 }
 
-.series-list article a{
-    height: 42px;
-    border-radius: 5px;
-    border: 2px solid rgb(0, 0, 0);
-    background: none;
-    margin-top: 10px;
-    color: rgb(216, 13, 13);
+.card.bg-white {
+    width: 350px;
+    height: 350px;
+    margin: 9px;
+    background-color: white;
+}
+
+.card.bg-light .card-body .card-header {
+    justify-content: center;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 10;
+    width: 100%;
+}
+
+.card.bg-light .card-body .card-header .card-title .h5{
+    justify-content: center;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 10;
+    width: 100%;
+    justify-content: center;
+}
+
+.card-title.h5{
+    align-content: center;
+    justify-content: center;
+}
+
+.card-body .card-header {
+    width: 100%;
+    margin:0;
+}
+
+.card-header{
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+}
+
+
+.card-title h5{
+    justify-content: center;
+    justify-items: center;
+    
+}
+
+.titulo {
+    vertical-align: middle;
+    width: 100%;  
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
     font-weight: bold;
-    font-size: 16px;
-    text-decoration: none;
-    display: flex;
+}
+
+.card-body.bg-white{
     justify-content: center;
     align-items: center;
-    transition: all 0.2s;
+    padding: 0;
+    margin: 0;
+    position: relative; 
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.301);
 }
 
-.series-list article a:hover{
-    background: rgb(0, 0, 0);
-    color: rgb(216, 13, 13);
+.card-header {
+    vertical-align: middle;
+    margin: 10px;
+    background-color: rgb(231, 230, 230);
 }
 
-.series-list .actions {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.series-list .actions button {
-    padding: 10px;
-    border-radius: 5px;
-    border: 0;
-    background: rgb(0, 0, 0);
-    color: rgb(216, 13, 13);
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.series-list .actions button[disabled] {
-    opacity: 0.5;
-    cursor: default;
-}
-
-.series-list .actions button:hover {
-    opacity: 0.7;
-}
-
-.series-list .actions button[disabled]:hover {
-    opacity: 0.5;
-}
-
-
-.series-list .actions .link p{
-    padding: 10px;
-    border-radius: 5px;
-    border: 0;
-    background: rgb(0, 0, 0);
-    color: rgb(216, 13, 13);
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.series-list .actions .link p:hover{
-    opacity: 0.7;
+.btn-update{
+    align-content: center;  
+    justify-content: center;
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
 }

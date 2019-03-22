@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import api from "../../services/Api";
 import './style.css';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import Confirm from '../../components/Confirm';
 
 export default class Serie extends Component {
     state = {
@@ -37,7 +46,7 @@ export default class Serie extends Component {
         //console.log(serieUpdate);
         var epCurr = serieUpdate.epCurrent;
         var seasonCurr = serieUpdate.seasonCurrent;
-        var objSerie = {epCurr, seasonCurr};
+        objSerie = {epCurr, seasonCurr};
         console.log(JSON.stringify(objSerie));
         const url = serieUpdate.ids;
         console.log(url);
@@ -46,36 +55,52 @@ export default class Serie extends Component {
         this.props.history.push("/");
     }
 
-    destroy = async (evento) => {
-        var r = window.confirm("Deseja realmente apagar o item?");
-        if (r == true) {
-            const url =JSON.parse(evento.target.value).id;
-            await api.delete(`/series/${url}`);
-            this.props.history.push("/");
-        }
-        
-    }
     render() {
         const { series, epCurrent, seasonCurrent, id } = this.state;
         const ids= id.id;
         const obj = { ids, epCurrent,  seasonCurrent};
 
         return (
-            <div className="serie-info">
-                <strong>Título: {series.title}</strong>
-                <p>Sinopse: {series.sinopse}</p>
-                <p>Quantidade de Temporadas: {series.seasons}</p>
-                <p>Episódio Atual: {series.epCurr}</p>
-                
-                <input type="number" value={epCurrent} onChange={this.onChangeEp}/>
-                <p>Temporada Atual: {series.seasonCurr}</p>
-                <input type="number" value={seasonCurrent} onChange={this.onChangeSeason}/>
-                <br/>
-                <div className="actions">
-                    <button onClick={this.onSubmit} type="submit" value={JSON.stringify(obj)}>Salvar</button>
-                    <button onClick={this.destroy} value={JSON.stringify(id)}>Apagar</button>
-                </div>
-            </div>
+
+            <div className='container-atualizar'>
+                <Container>
+                    <Card className='card-atualizar'>
+                        <Card.Body >
+                            <Card.Title> {series.title}</Card.Title>
+                            <Card.Text> Sinopse: {series.sinopse}</Card.Text>
+                            <Card.Text> Quantidade de Temporadas: {series.seasons}</Card.Text>
+                            <Form >
+                                <Form.Group controlId="formBasicEmail">
+                                    <Row>
+                                        <Col>
+                                            <Form.Label>Episódio Atual: {series.epCurr}</Form.Label>
+                                            <Form.Control type="number" value={epCurrent} onChange={this.onChangeEp} />
+                                        </Col>
+                                        <Col>
+                                            <Form.Label >Temporada Atual: {series.epCurr}</Form.Label>
+                                            <Form.Control type="number" value={seasonCurrent} onChange={this.onChangeSeason} />
+                                        </Col>
+                                    </Row>
+                                        <ButtonToolbar className='toolbar-atualizar'>
+                                            <Row>
+                                                <Col>
+                                                    <div className='btn-atualizar'>
+                                                        <Button size="lg" block variant="primary" onClick={this.onSubmit} type="submit" value={JSON.stringify(obj)}>
+                                                            Atualizar
+                                                        </Button>
+                                                    </div>
+                                                </Col>
+                                                <Col>
+                                                    <Confirm className="btn-confirma"/>
+                                                </Col>
+                                            </Row>
+                                        </ButtonToolbar>
+                                </Form.Group>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </Container>
+            </div>                
         );
     }
 }

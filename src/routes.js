@@ -10,9 +10,10 @@ const Routes = () => (
             <Route exact path="/" component={Main} />
             <Route path="/series/:id" component={Serie} />
             <Route path="/series-status/:status" component={Main}/>
+            <Route path="/series-search/:title" component={Main}/>
             <Route path="/series-create" component={AddSerie} />
         </Switch>
-    </BrowserRouter>
+    </ BrowserRouter>
 );
 
 export default Routes;

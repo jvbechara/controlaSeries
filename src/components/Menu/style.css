@@ -1,27 +1,16 @@
-nav {
-    font-size: 20px;
-    display: flex; 
-    align-items: center;
+.sugg{
+    position: relative;
+    z-index: 150;
+    margin-right: 5px;
 }
 
-.toolbar ul{
-    list-style: none;
+.btn-search{
+    margin-left: 5px;
+}
+
+.logo p{
+    font-size: xx-large;
+    color: #bbeffd;
     margin: 0;
     padding: 0;
-    display: flex;
-}
-
-.toolbar a{
-    color: rgb(216, 13, 13);
-    text-decoration: none;
-}
-
-.toolbar a:hover,
-.toolbar a:active{
-    opacity: 0.85;
-}
-
-.toolbar li{
-    padding: 0 0.5rem;
-    text-decoration: none;
 }

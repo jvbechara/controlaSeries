@@ -1,0 +1,23 @@
+.card-create {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 5px;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    display: inline-block;
+}
+
+
+
+.serie-info {
+    text-align: center;
+    background-color: rgba(224, 222, 222, 0.295);
+    padding: 0;
+    margin: 0;
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.048);
+}

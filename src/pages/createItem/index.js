@@ -2,21 +2,37 @@ import React, { Component } from "react";
 import api from "../../services/Api";
 import './styles.css';
 import Select from 'react-select';
+import Container from "react-bootstrap/Container";
+import Card from 'react-bootstrap/Card';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import Col from 'react-bootstrap/Col';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export default class Serie extends Component {
-    state = {
-        newTitle: '',
-        newSinopse: '',
-        newSeasons: 1,
-        newEpCurr: 1,
-        newSeasonCurr: 1,
-        selectedOption: null,
-        options: [
-            { value: 0, label: 'Minha Lista' },
-            { value: 1, label: 'Em Andamento' },
-            { value: 2, label: 'Assistidas' }
-          ]
-    };
+    constructor(props, context){
+        super(props, context);
+
+        this.state = {
+            newTitle: '',
+            newSinopse: '',
+            newSeasons: 1,
+            newEpCurr: 1,
+            newSeasonCurr: 1,
+            selectedOption: 0,
+            options: [
+                { value: 0, label: 'Minha Lista' },
+                { value: 1, label: 'Em Andamento' },
+                { value: 2, label: 'Assistidas' }
+              ]
+        };
+
+        this.onChangeStatus = this.onChangeStatus.bind(this);
+    }
 
     // async componentDidMount() {
        
@@ -27,15 +43,16 @@ export default class Serie extends Component {
         console.log(`Option selected:`, selectedOption);
       }
 
-    onSubmit = async (evento) => {
+    onSubmit = async(evento) => {
         //console.log("eou" + evento.target.value);
+        const {selectedOption} = this.state;
         const objNewSerie = JSON.parse(evento.target.value);
         //console.log(objNewSerie);
 
         var title = objNewSerie.newTitle;
         var sinopse = objNewSerie.newSinopse;
         var seasons = objNewSerie.newSeasons;
-        var status = objNewSerie.selectedOption.value;
+        var status = selectedOption;
         var epCurr = objNewSerie.newEpCurr;
         var seasonCurr = objNewSerie.newSeasonCurr;
         var objSerie = { title, sinopse, seasons, seasonCurr, epCurr, status};
@@ -68,12 +85,14 @@ export default class Serie extends Component {
  
     onChangeSeason = (evento) => {
         this.setState({newSeasonCurr: evento.target.value});
-        console.log(evento.target.value);
+        console.log(this.state.newSeasonCurr);
     }
 
     onChangeStatus = (evento) => {
-        this.setState({newStatus: evento.target.value});
         console.log(evento.target.value);
+        this.setState({selectedOption: evento.target.value});
+        //console.log(evento.target.value);
+        console.log(this.state.selectedOption);
     }
 
     render() {
@@ -84,8 +103,7 @@ export default class Serie extends Component {
         newSeasons,
         newEpCurr,
         newSeasonCurr,
-        newStatus,
-        options } = this.state;
+        } = this.state;
 
         const objNewSerie = {
             newTitle,
@@ -98,26 +116,48 @@ export default class Serie extends Component {
 
         return (
             <div className="serie-info">
-                <strong>Título: </strong>
-                <input type="text" onChange={this.onChangeTitle} value={newTitle}/>
-                <p>Sinopse: </p>
-                <input type="text" onChange={this.onChangeSinopse} value={newSinopse}/>
-                <p>Quantidade de Temporadas: </p>
-                <input type="Number" onChange={this.onChangeMaxSeason} value={newSeasons}/>
-                <p>Episódio Atual: </p>
-                <input type="Number" onChange={this.onChangeEp} value={newEpCurr}/>
-                <p>Temporada Atual: </p>
-                <input type="Number" onChange={this.onChangeSeason} value={newSeasonCurr}/>
-                <p>Status: </p>
-                <Select
-                    value={selectedOption}
-                    onChange={this.handleChange}
-                    options={options}
-                />
-                <br/>
-                <div className="actions">
-                    <button onClick={this.onSubmit} type="submit" value={JSON.stringify(objNewSerie)}>Adicionar</button>
-                </div>
+                <Container className='container-create'>
+                    <Card className='card-create'>
+                        <Card.Body >
+                            <Form>
+                                    
+                                    <Form.Label><h5>Título: </h5></Form.Label>
+                                    <Form.Control type="text" onChange={this.onChangeTitle} value={newTitle}/>
+                                
+                                <Form.Label>Sinopse:</Form.Label>
+                                <Form.Control type="text" onChange={this.onChangeSinopse} value={newSinopse}/>
+                                <Row>
+                                    <Col sm>
+                                    <Form.Label>Quantidade de Temporadas:</Form.Label>
+                                    <Form.Control type="Number" onChange={this.onChangeMaxSeason} value={newSeasons}/>
+                                    </Col>
+                                    <Col sm>
+                                    <Form.Label>Episódio Atual:</Form.Label>
+                                    <Form.Control type="Number" onChange={this.onChangeEp} value={newEpCurr}/>
+                                    </Col>
+                                    <Col sm>
+                                    <Form.Label>Temporada Atual:</Form.Label>
+                                    <Form.Control type="Number" onChange={this.onChangeSeason} value={newSeasonCurr}/>
+                                    </Col>
+                                </Row>
+                                <Form.Label>Status:</Form.Label>
+                                <Form.Control as="select" onChange={this.onChangeStatus}>
+                                    {
+                                        this.state.options.map((option, index)=>{
+                                            return(
+                                                <option key={option.value} value={option.value}>{option.label}</option>
+                                            )
+                                        })
+                                    }
+                                </Form.Control>
+
+                                <Button style={{ marginTop: '1rem'}} block variant='success' onClick={this.onSubmit} value={JSON.stringify(objNewSerie)}>
+                                    Adicionar
+                                </Button>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </Container>
             </div>
         );
     }

@@ -1,65 +1,35 @@
-.serie-info {
-    max-width: 700px;
-    margin: 20px auto 0;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    justify-content: center;
-    align-items: center; 
+.container-atualizar{
+    background-color: rgba(224, 222, 222, 0.295);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.048);
 }
 
-.serie-info h1 {
-    font-size: 32px;
+.card-atualizar{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding:15px;
+    text-align: center;
+    align-content: center;
+    align-items: center;
     justify-content: center;
+    justify-items: center;
+    display: inline-block;
 }
 
-.serie-info p {
-    color: #666;
-    line-height:24px;
-    margin-top: 5px;
+.btn-atualizar{
+    margin-top: 1rem;
+    align-content: center;  
     justify-content: center;
-    text-align: justify;
-}
-
-.serie-info p a {
-    color: #069;
-    justify-content: center;
-}
-
-.serie-info .btnSave button {
-    padding: 10px;
-    border-radius: 5px;
-    border: 0;
-    background: rgb(0, 0, 0);
-    color: rgb(216, 13, 13);
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
     text-align: center;
 }
 
-.serie-info .btnSave button:hover {
-    opacity: 0.8;
-}
-
-.serie-info .actions button {
-    padding: 10px;
-    border-radius: 5px;
-    border: 0;
-    background: rgb(0, 0, 0);
-    color: rgb(216, 13, 13);
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 15px 10px 0px 0px; 
-}
-
-.serie-info .actions button[disabled] {
-    opacity: 0.5;
-    cursor: default;
-}
-
-.serie-info .actions button:hover {
-    opacity: 0.7;
+.toolbar-atualizar{
+    align-content: center;  
+    justify-content: center;
+    text-align: center;
+    display: flex;
 }
