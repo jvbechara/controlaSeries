@@ -36,6 +36,7 @@ a:hover {
     padding: 10;
     width: 100%;
     justify-content: center;
+    
 }
 
 .card-title.h5{
@@ -50,6 +51,7 @@ a:hover {
 
 .card-header{
     text-align: center;
+    padding-bottom: 0;
 }
 
 .card-text {
@@ -83,10 +85,21 @@ a:hover {
     border-color: rgba(0, 0, 0, 0.301);
 }
 
+.justify-content-md-center {
+    justify-content: center;
+    align-items: center;
+    align-content: center;  
+    justify-content: center;
+}
+
 .card-header {
     vertical-align: middle;
     margin: 10px;
-    background-color: rgb(231, 230, 230);
+    /* background-color: rgb(231, 230, 230); */ 
+    background-color: #ffffff00;
+    border-bottom: 1px;
+    border-bottom-color: rgb(202, 202, 202);
+    border-bottom-style: solid;
 }
 
 .btn-update{
@@ -96,4 +109,17 @@ a:hover {
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
+}
+
+.btn-update Button{
+    background-color: #bbeffd36;
+    color: #007bff;
+}
+
+ul.justify-content-md-center-pagination{
+    background-color: #bbeffd36;
+}
+
+.corpo {
+    margin: 0.75rem;
 }

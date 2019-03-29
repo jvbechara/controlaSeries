@@ -1,11 +1,8 @@
 import "./style.css";
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import FormControl from 'react-bootstrap/FormControl';
-import Container from 'react-bootstrap/Container';
 import Suggestions from '../Menu/Suggestions';
 
 export default class Menu extends Component {

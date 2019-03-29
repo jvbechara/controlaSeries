@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import api from "../../services/Api";
 import './styles.css';
-import Select from 'react-select';
 import Container from "react-bootstrap/Container";
 import Card from 'react-bootstrap/Card';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Col from 'react-bootstrap/Col';
-import Dropdown from 'react-bootstrap/Dropdown';
 
 export default class Serie extends Component {
     constructor(props, context){
