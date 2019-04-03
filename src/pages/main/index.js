@@ -30,28 +30,23 @@ export default class Main extends Component {
 
     selectSeries = (page=1) => {
         const {status, title} = this.props.match.params;
-        
         // console.log(`status: ${status}`);
         // console.log(`title: ${title}`);
         // console.log(`page: ${page}`);
-        
         if (status !== undefined){
-            console.log("status");
             this.loadSeriesByStatus(status, page);
         }
         else if (title !== undefined){
-            console.log("search");
             this.loadSeriesSearch(title);
         } else{
-            console.log("normal");
             this.loadSeries(page);
         }
     }
 
     loadSeries = async (page=1) => {
+        console.log('response.data');
         const response = await api.get(`/series?page=${page}`);
         const { docs, ...seriesInfo } = response.data;
-        //console.log(response.data);
         this.setState({ series: docs, seriesInfo, page });
     }
 
@@ -121,39 +116,56 @@ export default class Main extends Component {
         this.props.history.push('/series/'+id);
     }
 
+    printSeries(series, stat){
+        if(series.length > 0){
+            return (
+                <>
+                <Row className="justify-content-md-center">
+                    {series.map(serie => (
+                        <article key={serie._id}>
+                            <Card bg="white">
+                                <Card.Body>
+                                    <div className="titulo">
+                                        <Card.Header><Card.Title><h3>{serie.title}</h3></Card.Title></Card.Header>
+                                    </div>
+                                    <div className='corpo'>
+                                        <Card.Text>Sinopse: {serie.sinopse}</Card.Text>
+                                        <Card.Text>Status: {stat[serie.status]}</Card.Text>
+                                        <Card.Text>Quantidade de Temporadas: {serie.seasons}</Card.Text>
+                                        <Card.Text>Episódio Atual: {serie.epCurr}</Card.Text>
+                                        <Card.Text>Temporada Atual: {serie.seasonCurr}</Card.Text>
+                                    </div>
+                                    <div className="btn-update">
+                                        <Button onClick={() => this.redirectSerie(serie._id)} variant="outline-primary">Atualizar</Button>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        </article>
+                    ))}
+                </Row>
+                <Container className="pg">
+                    {this.navbarPaginate()}
+                </Container>
+                </>
+            )
+        } else{
+            return(
+                <div className='notfound'>
+                    <h1> Nenhum resultado encontrado </h1>
+                </div>
+            )
+        }
+    }
+
     render() {
         const { series, stat } = this.state;
         //console.log(seriesInfo);
         return(
             <div className="crd">
                 <Container>
-                    <Row className="justify-content-md-center">
-                        {series.map(serie => (
-                            <article key={serie._id}>
-                                <Card bg="white">
-                                    <Card.Body>
-                                        <div className="titulo">
-                                            <Card.Header><Card.Title><h3>{serie.title}</h3></Card.Title></Card.Header>
-                                        </div>
-                                        <div className='corpo'>
-                                            <Card.Text>Sinopse: {serie.sinopse}</Card.Text>
-                                            <Card.Text>Status: {stat[serie.status]}</Card.Text>
-                                            <Card.Text>Quantidade de Temporadas: {serie.seasons}</Card.Text>
-                                            <Card.Text>Episódio Atual: {serie.epCurr}</Card.Text>
-                                            <Card.Text>Temporada Atual: {serie.seasonCurr}</Card.Text>
-                                        </div>
-                                        <div className="btn-update">
-                                            <Button onClick={() => this.redirectSerie(serie._id)} variant="outline-primary">Atualizar</Button>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </article>
-                        ))}
-                    </Row> 
+                    {this.printSeries(series, stat)}
                 </Container>
-                <Container className="pg">
-                    {this.navbarPaginate()}
-                </Container>
+                
             </div>
         );
     }

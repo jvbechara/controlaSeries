@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import './styles.css';
 import Routes from './routes';
-import { BrowserRouter } from 'react-router-dom';
-
+import "./styles/global";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => (
   <BrowserRouter>

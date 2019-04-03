@@ -1,7 +1,6 @@
 .sugg{
     position: relative;
     z-index: 150;
-    margin-right: 45px;
 }
 
 .btn-search{
@@ -15,10 +14,33 @@
     margin-left: 41px;
     margin-bottom: 0;
     padding: 0;
+    align-items: center;
+}
+
+img {
+    width: 200px;
+    margin-left: 5px;
 }
 
 .main-navbar{
     position: relative;
     width: 100%;
     z-index: 150;
+    overflow: hidden;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+}
+
+.mr-auto{
+    align-items: center;
+    font-size: large;
+}
+
+.login{
+    align-items: center;
+}
+
+.menu-direita{
+    align-items: center;
 }

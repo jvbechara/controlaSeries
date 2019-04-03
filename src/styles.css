@@ -6,8 +6,8 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #fafafa;
-    color: #333;
-    align-content: center;
-    background-color: #bbeffd36;
+    background: rgba(0, 0, 0, 0.849);
+    /* background: url(./images/cine1.jpg) fixed; */
+    /* background-size: 100%; */
+   
 }

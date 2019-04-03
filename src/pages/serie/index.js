@@ -24,8 +24,8 @@ export default class Serie extends Component {
         //this.setState({id: this.props.match.params})
         const idSerie = this.props.match.params.id;
         const response = await api.get(`/series/${idSerie}`);
-        this.setState({ series: response.data});
-        this.setState({epCurrent:response.data.epCurr, seasonCurrent: response.data.seasonCurr});
+        this.setState({ series: response.data[0]});
+        this.setState({epCurrent:response.data[0].epCurr, seasonCurrent: response.data[0].seasonCurr});
     }
 
     onChangeEp = (evento) => {
@@ -76,7 +76,7 @@ export default class Serie extends Component {
                                             <Form.Control type="number" value={epCurrent} onChange={this.onChangeEp} />
                                         </Col>
                                         <Col>
-                                            <Form.Label >Temporada Atual: {series.epCurr}</Form.Label>
+                                            <Form.Label >Temporada Atual: {series.seasonCurr}</Form.Label>
                                             <Form.Control type="number" value={seasonCurrent} onChange={this.onChangeSeason} />
                                         </Col>
                                     </Row>
