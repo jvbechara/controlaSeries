@@ -25,6 +25,7 @@ const Routes = () => (
         <Switch>
             <PrivateRoute exact path="/" component={Main} />
             <PrivateRoute exact path="/series/:id" component={Serie} />
+            <PrivateRoute exact path="/series" component={Main} />
             <PrivateRoute exact path="/series-status/:status" component={Main}/>
             <PrivateRoute exact path="/series-search/:title" component={Main}/>
             <PrivateRoute exact path="/series-create" component={AddSerie} />

@@ -61,7 +61,6 @@ export default class Serie extends Component {
         const obj = { ids, epCurrent,  seasonCurrent};
 
         return (
-
             <div className='container-atualizar'>
                 <Container>
                     <Card className='card-atualizar'>

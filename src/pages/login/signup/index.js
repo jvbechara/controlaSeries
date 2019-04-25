@@ -4,6 +4,8 @@ import { Form, Container } from "./styles";
 import api from "../../../services/Api";
 import Logo from "../../../images/bea5a206de3337ed485a477246bc6b66.png";
 import '../style.css';
+import { login, isAuthenticated } from "../../../services/auth";
+
 
 class SignUp extends Component {
   state = {
@@ -21,10 +23,12 @@ class SignUp extends Component {
     } else {
       try {
         await api.post("/user", { name: username, email, password });
+        const response = await api.post("/user/authenticate", {email, password});
+        login(response.data.token);
         this.props.history.push("/");
       } catch (err) {
         console.log(err);
-        this.setState({ error: "Ocorreu um erro ao registrar sua conta. T.T" });
+        this.setState({ error: "Ocorreu um erro ao registrar sua conta." });
       }
     }
   };

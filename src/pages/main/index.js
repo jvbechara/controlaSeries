@@ -44,7 +44,6 @@ export default class Main extends Component {
     }
 
     loadSeries = async (page=1) => {
-        console.log('response.data');
         const response = await api.get(`/series?page=${page}`);
         const { docs, ...seriesInfo } = response.data;
         this.setState({ series: docs, seriesInfo, page });
@@ -113,6 +112,7 @@ export default class Main extends Component {
     };
 
     redirectSerie(id){
+        console.log(id);
         this.props.history.push('/series/'+id);
     }
 
@@ -136,7 +136,7 @@ export default class Main extends Component {
                                         <Card.Text>Temporada Atual: {serie.seasonCurr}</Card.Text>
                                     </div>
                                     <div className="btn-update">
-                                        <Button onClick={() => this.redirectSerie(serie.id)} variant="outline-primary">Atualizar</Button>
+                                        <Button onClick={() => this.redirectSerie(serie._id)} variant="outline-primary">Atualizar</Button>
                                     </div>
                                 </Card.Body>
                             </Card>
