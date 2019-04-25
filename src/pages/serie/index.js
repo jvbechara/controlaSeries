@@ -21,11 +21,12 @@ export default class Serie extends Component {
     async componentDidMount() {
         // const { id } = this.props.match.params;
         this.setState({ id: this.props.match.params})
+
         //this.setState({id: this.props.match.params})
         const idSerie = this.props.match.params.id;
         const response = await api.get(`/series/${idSerie}`);
-        this.setState({ series: response.data[0]});
-        this.setState({epCurrent:response.data[0].epCurr, seasonCurrent: response.data[0].seasonCurr});
+        this.setState({ series: response.data});
+        this.setState({epCurrent:response.data.epCurr, seasonCurrent: response.data.seasonCurr});
     }
 
     onChangeEp = (evento) => {

@@ -122,7 +122,7 @@ export default class Main extends Component {
                 <>
                 <Row className="justify-content-md-center">
                     {series.map(serie => (
-                        <article key={serie._id}>
+                        <article key={serie.id}>
                             <Card bg="white">
                                 <Card.Body>
                                     <div className="titulo">
@@ -136,7 +136,7 @@ export default class Main extends Component {
                                         <Card.Text>Temporada Atual: {serie.seasonCurr}</Card.Text>
                                     </div>
                                     <div className="btn-update">
-                                        <Button onClick={() => this.redirectSerie(serie._id)} variant="outline-primary">Atualizar</Button>
+                                        <Button onClick={() => this.redirectSerie(serie.id)} variant="outline-primary">Atualizar</Button>
                                     </div>
                                 </Card.Body>
                             </Card>

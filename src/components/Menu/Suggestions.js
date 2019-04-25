@@ -26,7 +26,7 @@ class Suggestions extends Component {
     let autocompleteData = [];
     
     if(searchText.length > 0){
-      fetch(`http://localhost:3001/series-search/${searchText}`)
+      fetch(`http://localhost:3021/series-search/${searchText}`)
         .then(response => response.json()
           .then(json => {
             for(let j in json.docs){
