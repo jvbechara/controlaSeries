@@ -30,9 +30,6 @@ export default class Main extends Component {
 
     selectSeries = (page=1) => {
         const {status, title} = this.props.match.params;
-        // console.log(`status: ${status}`);
-        // console.log(`title: ${title}`);
-        // console.log(`page: ${page}`);
         if (status !== undefined){
             this.loadSeriesByStatus(status, page);
         }
@@ -53,16 +50,11 @@ export default class Main extends Component {
         const response = await api.get(`/series-status/${status}?page=${page}`);
         const { docs, ...seriesInfo } = response.data;
         this.setState({ series: docs, seriesInfo, page, status });
-        //console.log(response.data);
     }
 
     newLoadSeries = async (page) => {
-        //const url = window.location.href;
-        //console.log(url);
         const response = await api.get(`/series?page=${page}`);
         const { docs, ...seriesInfo } = response.data;
-        //console.log(response.data);
-        console.log(response.data.docs);
         this.setState({ series: docs, seriesInfo, page });
     }
 
@@ -112,7 +104,6 @@ export default class Main extends Component {
     };
 
     redirectSerie(id){
-        console.log(id);
         this.props.history.push('/series/'+id);
     }
 
@@ -159,7 +150,6 @@ export default class Main extends Component {
 
     render() {
         const { series, stat } = this.state;
-        //console.log(seriesInfo);
         return(
             <div className="crd">
                 <Container>

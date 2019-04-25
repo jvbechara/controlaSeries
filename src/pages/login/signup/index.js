@@ -27,7 +27,6 @@ class SignUp extends Component {
         login(response.data.token);
         this.props.history.push("/");
       } catch (err) {
-        console.log(err);
         this.setState({ error: "Ocorreu um erro ao registrar sua conta." });
       }
     }

@@ -29,20 +29,13 @@ export default class Serie extends Component {
         this.onChangeStatus = this.onChangeStatus.bind(this);
     }
 
-    // async componentDidMount() {
-       
-    // }
-
     handleChange = (selectedOption) => {
         this.setState({ selectedOption });
-        console.log(`Option selected:`, selectedOption);
       }
 
     onSubmit = async(evento) => {
-        //console.log("eou" + evento.target.value);
         const {selectedOption} = this.state;
         const objNewSerie = JSON.parse(evento.target.value);
-        //console.log(objNewSerie);
 
         var title = objNewSerie.newTitle;
         var sinopse = objNewSerie.newSinopse;
@@ -52,42 +45,32 @@ export default class Serie extends Component {
         var seasonCurr = objNewSerie.newSeasonCurr;
         var objSerie = { title, sinopse, seasons, seasonCurr, epCurr, status};
 
-        console.log(objSerie);
-
         await api.post("/series-create/", objSerie);
         this.props.history.push('/');
     }
 
     onChangeTitle = (evento) => {
         this.setState({newTitle: evento.target.value});
-        console.log(evento.target.value);
     }
 
     onChangeSinopse = (evento) => {
         this.setState({newSinopse: evento.target.value});
-        console.log(evento.target.value);
     }
 
     onChangeMaxSeason = (evento) => {
         this.setState({newSeasons: evento.target.value});
-        console.log(evento.target.value);
     }
 
     onChangeEp = (evento) => {
         this.setState({newEpCurr: evento.target.value});
-        console.log(evento.target.value);
     }
  
     onChangeSeason = (evento) => {
         this.setState({newSeasonCurr: evento.target.value});
-        console.log(this.state.newSeasonCurr);
     }
 
     onChangeStatus = (evento) => {
-        console.log(evento.target.value);
         this.setState({selectedOption: evento.target.value});
-        //console.log(evento.target.value);
-        console.log(this.state.selectedOption);
     }
 
     render() {

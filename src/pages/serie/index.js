@@ -31,25 +31,19 @@ export default class Serie extends Component {
 
     onChangeEp = (evento) => {
        this.setState({epCurrent: evento.target.value});
-       console.log(evento.target.value);
     }
 
     onChangeSeason = (evento) => {
         this.setState({seasonCurrent: evento.target.value});
-        console.log(evento.target.value);
     }
 
     onSubmit = async (evento) => {
         var objSerie = {};
-        //console.log(JSON.parse(evento.target.value).ids);
         const serieUpdate = JSON.parse(evento.target.value);
-        //console.log(serieUpdate);
         var epCurr = serieUpdate.epCurrent;
         var seasonCurr = serieUpdate.seasonCurrent;
         objSerie = {epCurr, seasonCurr};
-        console.log(JSON.stringify(objSerie));
         const url = serieUpdate.ids;
-        console.log(url);
         evento.preventDefault();
         await api.put(`/series/${url}`, objSerie);
         this.props.history.push("/");

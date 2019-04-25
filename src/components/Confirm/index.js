@@ -30,7 +30,6 @@ class Confirm extends Component {
 
         const tam = window.location.href.split('/').length;
         const id = window.location.href.split('/')[tam-1];
-        console.log(id);
 
         // const url =JSON.parse(evento.target.value).id;
         await api.delete(`/series/${id}`);

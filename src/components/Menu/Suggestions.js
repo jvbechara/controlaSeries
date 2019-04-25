@@ -78,8 +78,6 @@ class Suggestions extends Component {
   }
 
   render() {
-      console.log(this.state.autocompleteData);
-
       return (
         <div className="sugg">
           <Autocomplete
